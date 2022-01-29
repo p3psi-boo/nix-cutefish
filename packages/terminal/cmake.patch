@@ -1,0 +1,16 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7cf7c74..79758d9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -19,10 +19,7 @@ if(NOT QT_QMAKE_EXECUTABLE)
+     message(FATAL_ERROR "qmake is not found.")
+ endif()
+ 
+-execute_process(COMMAND ${QT_QMAKE_EXECUTABLE} -query QT_INSTALL_QML
+-    OUTPUT_VARIABLE INSTALL_QMLDIR
+-    OUTPUT_STRIP_TRAILING_WHITESPACE
+-)
++set(INSTALL_QMLDIR ${KDE_INSTALL_QMLDIR})
+ if(INSTALL_QMLDIR)
+     message(STATUS "qml directory:" "${INSTALL_QMLDIR}")
+ else()

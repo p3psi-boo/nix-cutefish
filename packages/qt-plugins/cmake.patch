@@ -1,0 +1,29 @@
+diff --git a/platformtheme/CMakeLists.txt b/platformtheme/CMakeLists.txt
+index cc55f01..5853b30 100644
+--- a/platformtheme/CMakeLists.txt
++++ b/platformtheme/CMakeLists.txt
+@@ -79,11 +79,7 @@ if(NOT QT_QMAKE_EXECUTABLE)
+     message(FATAL_ERROR "qmake is not found.")
+ endif()
+ 
+-# execute the command "qmake -query QT_INSTALL_PLUGINS" to get the path of plugins dir.
+-execute_process(COMMAND ${QT_QMAKE_EXECUTABLE} -query QT_INSTALL_PLUGINS
+-    OUTPUT_VARIABLE QT_PLUGINS_DIR
+-    OUTPUT_STRIP_TRAILING_WHITESPACE
+-)
++set(QT_PLUGINS_DIR ${KDE_INSTALL_QTPLUGINDIR})
+ if(QT_PLUGINS_DIR)
+     message(STATUS "Qt5 plugin directory:" "${QT_PLUGINS_DIR}")
+ else()
+diff --git a/widgetstyle/CMakeLists.txt b/widgetstyle/CMakeLists.txt
+index 218f64b..bd6872b 100644
+--- a/widgetstyle/CMakeLists.txt
++++ b/widgetstyle/CMakeLists.txt
+@@ -43,6 +43,6 @@ target_link_libraries(${TARGET}
+     KF5::WindowSystem
+     )
+ 
+-query_qmake(CMAKE_INSTALL_QTPLUGINDIR QT_INSTALL_PLUGINS)
++set(CMAKE_INSTALL_QTPLUGINDIR ${KDE_INSTALL_QTPLUGINDIR})
+ 
+ install(TARGETS ${TARGET} DESTINATION ${CMAKE_INSTALL_QTPLUGINDIR}/styles/)

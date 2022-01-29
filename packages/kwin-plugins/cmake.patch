@@ -1,0 +1,17 @@
+diff --git a/plugins/CMakeLists.txt b/plugins/CMakeLists.txt
+index 071d8a1..3cb76f4 100644
+--- a/plugins/CMakeLists.txt
++++ b/plugins/CMakeLists.txt
+@@ -8,11 +8,7 @@ if(NOT QT_QMAKE_EXECUTABLE)
+     message(FATAL_ERROR "qmake is not found.")
+ endif()
+ 
+-# execute the command "qmake -query QT_INSTALL_PLUGINS" to get the path of plugins dir.
+-execute_process(COMMAND ${QT_QMAKE_EXECUTABLE} -query QT_INSTALL_PLUGINS
+-    OUTPUT_VARIABLE QT_PLUGINS_DIR
+-    OUTPUT_STRIP_TRAILING_WHITESPACE
+-)
++set(QT_PLUGINS_DIR ${KDE_INSTALL_QTPLUGINDIR})
+ if(QT_PLUGINS_DIR)
+     message(STATUS "Qt5 plugin directory:" "${QT_PLUGINS_DIR}")
+ else()
